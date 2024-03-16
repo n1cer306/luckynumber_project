@@ -1,6 +1,28 @@
 {% extends "main/layout.html" %}
+{% load static %}
 
-{% block title %}Случайное число{% endblock %}
+{% block link %}<link rel="stylesheet" href="{% static 'randoms/styles/style.css' %}">{% endblock %}
+{% block title %}Удачное число{% endblock %}
 
 {% block section %}
+<div class="block">
+    <h1 class="text-r roboto-thin">Удачное число</h1>
+    <div class="block-random-number">
+        <p style="font-size: 60px; color: aliceblue; margin-bottom: 2rem;" class="roboto-thin" id="number">100</p>
+    </div>
+    <div class="random-number-range">
+        <div class="block-from">
+            <p style="font-size: 20px; color: aliceblue;">От</p>
+            <input type="text" id="from">
+        </div>
+        <div class="block-to">
+            <p style="font-size: 20px; color: aliceblue;">До</p>
+            <input type="text" id="to">
+        </div>
+    </div>
+    <div class="section-btn">
+        <a type="button" class="btn btn-outline-danger btn-lg" id="gen-number">Сгенерировать</a>
+    </div>
+</div>
+<script src="{% static 'randoms/js/random_number.js' %}" defer></script>
 {% endblock %}

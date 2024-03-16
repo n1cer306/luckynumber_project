@@ -1,0 +1,57 @@
+.block {
+    position: absolute;
+    top: 20rem;
+    width: 100%;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+.text-r {
+    position: relative;
+    bottom: 4rem;
+    font-size: 50px;
+    color: aliceblue;
+}
+
+.random-number-range,
+.block-from,
+.block-to {
+    display: flex;
+    justify-content: center;
+}
+
+#from,
+#to {
+    width: 150px;
+    margin-left: 1rem;
+    border: 1px #dc3545 solid;
+    background-color: transparent;
+    border-radius: 8px;
+    outline: none;
+    padding-left: 12px;
+    padding-right: 5px;
+    color: aliceblue;
+}
+
+#from:focus,
+#to:focus {
+    border-color: #c43035;
+}
+
+.block-from {
+    margin-right: 1rem;
+}
+
+#number {
+    position: relative;
+}
+
+.block-random-number {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
