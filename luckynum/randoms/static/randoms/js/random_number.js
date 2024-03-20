@@ -43,9 +43,10 @@ genNumber.addEventListener('click', function() {
     // number.textContent = randomNumber; // Генерация числа
 });
 
-function random(from, to) {
-    var max = null;
-    var min = null;
+function random(from=0, to=10) {
+    const randomNumber = Math.random();
+    let min = null;
+    let max = null;
 
     if (from > to) {
         max = from;
@@ -53,33 +54,19 @@ function random(from, to) {
     } else {
         max = to;
         min = from;
-    }
+    };
 
-    const randomNumber = Math.random();
-    let number = randomNumber * max;
-
-    if (min <= number) {     
-        return parseInt(number);
+    let number = parseInt(`${randomNumber}`.substring(2, `${max}`.length+2));
+    if (number >= min && number <= max) {
+        return number;
     } else {
-        number = `${number}`.substring(3);
-        luckyNumber = null;
-        let mas = [];
+        let randomNumber2 = Math.random();
 
-        for (let i = 0; i < number.length; i++) {
-            mas[i] = number[i];
+        for (var number2 = parseInt(`${randomNumber2}`.substring(2, `${max}`.length+2)); (number2 >= min && number2 <= max) === false;) {
+            randomNumber2 = Math.random();
+            number2 = parseInt(`${randomNumber2}`.substring(2, `${max}`.length+2))
         }
 
-        let i = 0
-        let j = 1
-        while ((i <= mas.length - 1) && (j <= mas.length)){
-            if (parseInt(mas[i] + mas[j]) >= min && parseInt(mas[i] + mas[j]) <= max) {
-                luckyNumber = parseInt(mas[i] + mas[j]);
-                break
-            } else {
-                i += 1;
-                j += 1;
-            }
-        }
-        return luckyNumber === null ? parseInt(min) : luckyNumber;
+        return number2;
     }
 }
