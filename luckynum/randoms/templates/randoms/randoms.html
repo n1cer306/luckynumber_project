@@ -13,12 +13,23 @@
     <div class="random-number-range">
         <div class="block-from">
             <p style="font-size: 20px; color: aliceblue;">От</p>
-            <input type="text" id="from">
+            <input type="text" maxlength="9" id="from" name="numbers" autocomplete="off" onkeypress="return isNumber(event)">
         </div>
         <div class="block-to">
             <p style="font-size: 20px; color: aliceblue;">До</p>
-            <input type="text" id="to">
+            <input type="text" maxlength="9" id="to" name="numbers" autocomplete="off" onkeypress="return isNumber(event)">
         </div>
+
+        <script>
+            // input only numbers
+            function isNumber(evt) {
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+            }
+        </script>
     </div>
     <div class="section-btn">
         <a type="button" class="btn btn-outline-danger btn-lg" id="gen-number">Сгенерировать</a>

@@ -3,9 +3,18 @@ var number = document.getElementById("number");
 var numberBlock = document.querySelector(".block-random-number");
 
 genNumber.addEventListener('click', function() {
-    let fromNumber = parseInt(document.getElementById('from').value);
-    let toNumber = parseInt(document.getElementById('to').value);
-    const randomNumberGen = random(fromNumber, toNumber);
+    let fromNumber = document.getElementById('from').value;
+    let toNumber = document.getElementById('to').value;
+
+    if (fromNumber == '' || toNumber == '') {
+        fromNumber = 100;
+        toNumber = 100;
+    } else {
+        fromNumber = parseInt(document.getElementById('from').value);
+        toNumber = parseInt(document.getElementById('to').value);
+    }
+
+    var randomNumberGen = random(fromNumber, toNumber);
 
     let countNumbers = `${randomNumberGen}`.length; 
     let strRandomNumber = `${randomNumberGen}`;
@@ -40,7 +49,7 @@ genNumber.addEventListener('click', function() {
     }
 });
 
-// генерация случайного числа
+// функция генерации случайного числа
 function random(from=0, to=10) {
     const randomNumber = Math.random();
     let min = null;
@@ -62,8 +71,13 @@ function random(from=0, to=10) {
         for (var number2 = parseInt(`${randomNumber2}`.substring(2, `${max}`.length+2)); (number2 >= min && number2 <= max) === false;) {
             randomNumber2 = Math.random();
             number2 = parseInt(`${randomNumber2}`.substring(2, `${max}`.length+2));
-        }
+        };
 
         return number2;
-    }
-}
+    };
+};
+
+// input - only numbers
+document.getElementById('from').addEventListener('input', function(e){
+    this.value = this.value.replace('+-', '');
+});
